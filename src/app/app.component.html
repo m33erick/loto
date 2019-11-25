@@ -1,4 +1,33 @@
 <hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+
+
+<table *ngIf="users" cellspacing = "0"><tr class="fonce" height="35"><td width="30"></td>
+<div>
+  <td width="100">lundi</td>
+  <td width="100">04-11-2019</td>
+  <td width="50"></td>
+  <td width="100">1</td>
+  <td width="100">9</td>
+  <td width="100">16</td>
+  <td width="100">39</td>
+  <td width="100">42</td>
+  <td width="100">7</td>
+  <br/>
+  <br/>
+
+ 
+ </div>
+  <div *ngFor="let user of users.records; let i = index">
+				<td width="100">{{ user.fields.jour_de_tirage | lowercase }}</td>
+				<td width="100">{{ user.fields.date_de_tirage | date: 'dd-MM-yyyy'}}</td>
+				<td width="50"></td>
+				<td width="100">{{ user.fields.boule_1 }}</td>
+				<td width="100">{{ user.fields.boule_2 }}</td>
+				<td width="100">{{ user.fields.boule_3 }}</td>
+				<td width="100">{{ user.fields.boule_4 }}</td>
+				<td width="100">{{ user.fields.boule_5 }}</td>
+				<td width="100" class="font-blue">{{user.fields.numero_chance}}</td><td width="30"></td>
+    <p>{{i}}) {{ user.fields.combinaison_gagnante_en_ordre_croissant }} </p>
+  </div>
+
+</table>
