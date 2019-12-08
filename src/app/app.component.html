@@ -14,20 +14,21 @@
   <td width="100">7</td>
   <br/>
   <br/>
+  <div>{{dataSource[0].fields.boule_1}}</div>
 
  
- </div>
-  <div *ngFor="let user of users.records; let i = index">
-				<td width="100">{{ user.fields.jour_de_tirage | lowercase }}</td>
-				<td width="100">{{ user.fields.date_de_tirage | date: 'dd-MM-yyyy'}}</td>
-				<td width="50"></td>
-				<td width="100">{{ user.fields.boule_1 }}</td>
-				<td width="100">{{ user.fields.boule_2 }}</td>
-				<td width="100">{{ user.fields.boule_3 }}</td>
-				<td width="100">{{ user.fields.boule_4 }}</td>
-				<td width="100">{{ user.fields.boule_5 }}</td>
-				<td width="100" class="font-blue">{{user.fields.numero_chance}}</td><td width="30"></td>
-    <p>{{i}}) {{ user.fields.combinaison_gagnante_en_ordre_croissant }} </p>
-  </div>
+</div>
+<div *ngFor="let user of users.records; let i = index">
+      <td width="100">{{ user.fields.jour_de_tirage | lowercase }}</td>
+      <td width="100">{{ user.fields.date_de_tirage | date: 'dd MMMM yyyy': '' : 'fr'}}</td>
+      <td width="50"></td>
+      <td width="100">{{ user.fields.boule_1 }}</td>
+      <td width="100">{{ user.fields.boule_2 }}</td>
+      <td width="100">{{ user.fields.boule_3 }}</td>
+      <td width="100">{{ user.fields.boule_4 }}</td>
+      <td width="100">{{ user.fields.boule_5 }}</td>
+      <td width="100" class="font-blue">{{user.fields.numero_chance}}</td><td width="30"></td>
+  <p>{{i}}) {{ user.fields.combinaison_gagnante_en_ordre_croissant }} </p>
+</div>
 
 </table>

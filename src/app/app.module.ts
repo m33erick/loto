@@ -9,6 +9,11 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { DataService } from './shared/services/data.service';
 
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr, 'fr');
+
 @NgModule({
   declarations: [
     AppComponent,

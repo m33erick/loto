@@ -10,12 +10,16 @@ export class AppComponent implements OnInit {
   title = 'loto';
   name = 'Angular';
   users: object;
+  dataSource = [];
+
   constructor(private data: DataService) { }
 
   ngOnInit() {
       this.data.getUsers().subscribe(data => {
         this.users = data;
         console.log(this.users);
+        this.dataSource = data.records;
+        console.log(this.dataSource);
       }
     );
     }
