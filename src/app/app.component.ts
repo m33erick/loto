@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './shared/services/data.service';
+import { Tirages } from './shared/models/tirages';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { DataService } from './shared/services/data.service';
 export class AppComponent implements OnInit {
   title = 'loto';
   name = 'Angular';
-  users: object;
+  users: Tirages;
   dataSource = [];
 
   constructor(private data: DataService) { }
