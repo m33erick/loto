@@ -10,14 +10,14 @@ import { Tirages } from './shared/models/tirages';
 export class AppComponent implements OnInit {
   title = 'loto';
   name = 'Angular';
-  users: Tirages;
+  tirages: Tirages;
   dataSource = [];
 
   constructor(private data: DataService) { }
 
   ngOnInit() {
-      this.data.getUsers().subscribe(data => {
-        this.users = data;
+      this.data.getTirages().subscribe(data => {
+        this.tirages = data;
         // console.log(this.users);
         this.dataSource = data.records;
         console.log(this.dataSource);
