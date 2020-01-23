@@ -41,6 +41,18 @@ export class Fields {
     numero_jokerplus: string;
     annee_numero_de_tirage: string;
   }
+export class FieldsData {
+  combinaison_gagnante_en_ordre_croissant: string;
+  date_de_tirage: string;
+  numero_chance: string;
+  boule_1: number;
+  boule_3: number;
+  boule_2: number;
+  boule_5: number;
+  jour_de_tirage: string;
+  boule_4: number;
+  annee_numero_de_tirage: string;
+  }
 
 export class Parameters {
     dataset: string[];

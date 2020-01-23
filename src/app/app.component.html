@@ -7,7 +7,6 @@
   </mat-toolbar>
 <app-hello name="{{ name }}"></app-hello>
 
-
 <table *ngIf="tirages" cellspacing = "0"><tr class="fonce" height="35"><td width="30"></td>
 <div>
   <td width="100">lundi</td>
@@ -21,21 +20,81 @@
   <td width="100">7</td>
   <br/>
   <br/>
-  <div>{{dataSource[0].fields.boule_1}}</div>
-
- 
-</div>
-<div *ngFor="let tirage of tirages.records; let i = index">
-      <td width="100">{{ tirage.fields.jour_de_tirage | lowercase }}</td>
-      <td width="100">{{ tirage.fields.date_de_tirage | date: 'dd MMMM yyyy': '' : 'fr'}}</td>
-      <td width="50"></td>
-      <td width="100">{{ tirage.fields.boule_1 }}</td>
-      <td width="100">{{ tirage.fields.boule_2 }}</td>
-      <td width="100">{{ tirage.fields.boule_3 }}</td>
-      <td width="100">{{ tirage.fields.boule_4 }}</td>
-      <td width="100">{{ tirage.fields.boule_5 }}</td>
-      <td width="100" class="font-blue">{{tirage.fields.numero_chance}}</td><td width="30"></td>
-  <p>{{i}}) {{ tirage.fields.combinaison_gagnante_en_ordre_croissant }} </p>
 </div>
 
 </table>
+
+<!-- app.component.html -->
+<div class="example-container mat-elevation-z8">
+
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- rang Column -->
+    <ng-container matColumnDef="ordre">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ordre </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ordre}}) </mat-cell>
+    </ng-container>
+
+    <!-- jour_de_tirage Column -->
+    <ng-container matColumnDef="jour_de_tirage">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Jour </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.jour_de_tirage | lowercase}} </mat-cell>
+    </ng-container>
+  
+    <!-- date_de_tirage Column -->
+    <ng-container matColumnDef="date_de_tirage">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Date du tirage </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.date_de_tirage | date: 'dd MMMM yyyy': '' : 'fr'}} </mat-cell>
+    </ng-container>
+  
+    <!-- boule_1 Column -->
+    <ng-container matColumnDef="boule_1">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Boule 1  </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.boule_1}} </mat-cell>
+    </ng-container>
+
+    <!-- boule_2 Column -->
+    <ng-container matColumnDef="boule_2">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Boule 2  </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.boule_2}} </mat-cell>
+    </ng-container>
+
+    <!-- boule_3 Column -->
+    <ng-container matColumnDef="boule_3">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Boule 3  </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.boule_3}} </mat-cell>
+    </ng-container>
+
+    <!-- boule_4 Column -->
+    <ng-container matColumnDef="boule_4">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Boule 4  </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.boule_4}} </mat-cell>
+    </ng-container>
+
+    <!-- boule_5 Column -->
+    <ng-container matColumnDef="boule_5">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Boule 5  </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.boule_5}} </mat-cell>
+    </ng-container>
+
+    <!-- numero_chance Column -->
+    <ng-container matColumnDef="numero_chance">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Numéro chance </mat-header-cell>
+      <mat-cell *matCellDef="let element" [style.color]="'blue'"> {{element.numero_chance}} </mat-cell>
+    </ng-container>
+  
+    <!-- combinaison_gagnante_en_ordre_croissant Column -->
+    <ng-container matColumnDef="combinaison_gagnante_en_ordre_croissant">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Combinaison gagnante </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.combinaison_gagnante_en_ordre_croissant}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</div>

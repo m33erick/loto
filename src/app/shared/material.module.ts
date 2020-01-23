@@ -7,7 +7,10 @@ import {
   MatInputModule,
   MatToolbarModule,
   MatSidenavModule,
-  MatCardModule
+  MatCardModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule
 } from '@angular/material/';
 import {FormsModule} from '@angular/forms';
 
@@ -21,7 +24,10 @@ import {FormsModule} from '@angular/forms';
     MatInputModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
 ], exports: [
   BrowserAnimationsModule,
   FormsModule,
@@ -31,7 +37,10 @@ import {FormsModule} from '@angular/forms';
   MatInputModule,
   MatToolbarModule,
   MatSidenavModule,
-  MatCardModule
+  MatCardModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule
 ],
   declarations: []
 })
