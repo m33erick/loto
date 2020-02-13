@@ -9,15 +9,15 @@
 
 <table *ngIf="tirages" cellspacing = "0"><tr class="fonce" height="35"><td width="30"></td>
 <div>
-  <td width="100">lundi</td>
-  <td width="100">04 novembre 2019</td>
+  <td width="100"><font color='blue'>{{dernierResultat.jour_de_tirage}}</font></td>
+  <td width="100"><font color='blue'>{{dernierResultat.date_de_tirage}}</font></td>
   <td width="50"></td>
-  <td width="100">1</td>
-  <td width="100">9</td>
-  <td width="100">16</td>
-  <td width="100">39</td>
-  <td width="100">42</td>
-  <td width="100">7</td>
+  <td width="100"><font color=dernierResultat.couleur_1>{{dernierResultat.boule_1}}</font></td>
+  <td width="100"><font color=dernierResultat.couleur_1>{{dernierResultat.boule_2}}</font></td>
+  <td width="100"><font color=dernierResultat.couleur_1>{{dernierResultat.boule_3}}</font></td>
+  <td width="100"><font color=dernierResultat.couleur_1>{{dernierResultat.boule_4}}</font></td>
+  <td width="100"><font color=dernierResultat.couleur_1>{{dernierResultat.boule_5}}</font></td>
+  <td width="100"><font color='blue'>{{dernierResultat.numero_chance}}</font></td>
   <br/>
   <br/>
 </div>
@@ -41,43 +41,43 @@
     <!-- jour_de_tirage Column -->
     <ng-container matColumnDef="jour_de_tirage">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Jour </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.jour_de_tirage | lowercase}} </mat-cell>
+      <mat-cell *matCellDef="let element" [style.color]="'blue'"> {{element.jour_de_tirage | lowercase}} </mat-cell>
     </ng-container>
   
     <!-- date_de_tirage Column -->
     <ng-container matColumnDef="date_de_tirage">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Date du tirage </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.date_de_tirage | date: 'dd MMMM yyyy': '' : 'fr'}} </mat-cell>
+      <mat-cell *matCellDef="let element" [style.color]="'blue'"> {{element.date_de_tirage | date: 'dd MMMM yyyy': '' : 'fr'}} </mat-cell>
     </ng-container>
   
     <!-- boule_1 Column -->
     <ng-container matColumnDef="boule_1">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Boule 1  </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.boule_1}} </mat-cell>
+      <mat-cell *matCellDef="let element" [style.color]="element.couleur_1"> {{element.boule_1}} </mat-cell>
     </ng-container>
 
     <!-- boule_2 Column -->
     <ng-container matColumnDef="boule_2">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Boule 2  </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.boule_2}} </mat-cell>
+      <mat-cell *matCellDef="let element" [style.color]="element.couleur_2"> {{element.boule_2}} </mat-cell>
     </ng-container>
 
     <!-- boule_3 Column -->
     <ng-container matColumnDef="boule_3">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Boule 3  </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.boule_3}} </mat-cell>
+      <mat-cell *matCellDef="let element" [style.color]="element.couleur_3"> {{element.boule_3}} </mat-cell>
     </ng-container>
 
     <!-- boule_4 Column -->
     <ng-container matColumnDef="boule_4">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Boule 4  </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.boule_4}} </mat-cell>
+      <mat-cell *matCellDef="let element" [style.color]="element.couleur_4"> {{element.boule_4}} </mat-cell>
     </ng-container>
 
     <!-- boule_5 Column -->
     <ng-container matColumnDef="boule_5">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Boule 5  </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.boule_5}} </mat-cell>
+      <mat-cell *matCellDef="let element" [style.color]="element.couleur_5"> {{element.boule_5}} </mat-cell>
     </ng-container>
 
     <!-- numero_chance Column -->
