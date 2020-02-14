@@ -14,13 +14,14 @@ export class AppComponent implements OnInit {
   dernierResultat: TirageData;
   tirages: Tirages;
   dataSource: MatTableDataSource<TirageData>;
-displayedColumns: string[] = ['ordre', 'jour_de_tirage', 'date_de_tirage', 'boule_1', 'boule_2', 'boule_3', 'boule_4', 'boule_5', 'numero_chance', 'combinaison_gagnante_en_ordre_croissant'];
+displayedColumns: string[] = ['ordre', 'jour_de_tirage', 'date_de_tirage', 'boule_1', 'boule_2', 'boule_3', 'boule_4', 'boule_5',
+ 'numero_chance', 'combinaison_gagnante_en_ordre_croissant'];
 @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 @ViewChild(MatSort, {static: false}) sort: MatSort;
 
   constructor(private data: DataService) {
     this.dernierResultat= {ordre: 0, jour_de_tirage: 'lundi', date_de_tirage: '04 novembre 2019',
-    boule_1: 1, boule_2: 9, boule_3: 6, boule_4: 39, boule_5: 42, numero_chance: '7',
+    boule_1: 1, boule_2: 9, boule_3: 16, boule_4: 39, boule_5: 42, numero_chance: '7',
     couleur_1: 'red', couleur_2: 'red', couleur_3: 'red', couleur_4: 'red', couleur_5: 'red',
     combinaison_gagnante_en_ordre_croissant: ''};
    }
@@ -54,12 +55,18 @@ displayedColumns: string[] = ['ordre', 'jour_de_tirage', 'date_de_tirage', 'boul
 
 /** Builds and returns a new User. */
 function creerLigne(id: number, tirages: Tirages, derResult: TirageData): TirageData {
-  let boule1 = tirages.records[id].fields.boule_1;
-  let boule2 = tirages.records[id].fields.boule_2;
-  let boule3 = tirages.records[id].fields.boule_3;
-  let boule4 = tirages.records[id].fields.boule_4;
-  let boule5 = tirages.records[id].fields.boule_5;
-  let resultatCourant: number[] = [derResult.boule_1, derResult.boule_2, derResult.boule_3, derResult.boule_4, derResult.boule_5];
+  const ligneTirages: number[] = [tirages.records[id].fields.boule_1, tirages.records[id].fields.boule_2,
+   tirages.records[id].fields.boule_3,
+   tirages.records[id].fields.boule_4, tirages.records[id].fields.boule_5];
+  const ligneTiragesTriee: number[] = ligneTirages.sort((a, b) => a - b);
+
+  const boule1 = ligneTiragesTriee[0];
+  const boule2 = ligneTiragesTriee[1];
+  const boule3 = ligneTiragesTriee[2];
+  const boule4 = ligneTiragesTriee[3];
+  const boule5 = ligneTiragesTriee[4];
+
+  const resultatCourant: number[] = [derResult.boule_1, derResult.boule_2, derResult.boule_3, derResult.boule_4, derResult.boule_5];
   return {
     ordre: id + 1,
     jour_de_tirage: tirages.records[id].fields.jour_de_tirage,
@@ -81,12 +88,10 @@ function creerLigne(id: number, tirages: Tirages, derResult: TirageData): Tirage
 
 function controlerResultat(result: number[], bouleComparee: number): string {
   let couleurMatch = 'black';
-  for (let i=0; i<5; i++) {
-    // console.log("result = "+ result[i] + "boule" + i + bouleComparee + couleurMatch);
+  for (let i = 0; i < 5; i++) {
     if (result[i] === bouleComparee) {
       couleurMatch = 'red';
-    // console.log("match result = "+ result[i] + "*" +bouleComparee + couleurMatch);
-    break;
+      break;
     }
   }
   return couleurMatch;
